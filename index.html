@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lido Le Canne - Calcola Preventivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .beach-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-section {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        select, input[type="date"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        
+        select:focus, input[type="date"]:focus {
+            outline: none;
+            border-color: #0077b6;
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+        }
+        
+        .date-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn-calcola {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-calcola:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,119,182,0.3);
+        }
+        
+        .btn-calcola:active {
+            transform: translateY(0);
+        }
+        
+        .result {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .result-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.95rem;
+        }
+        
+        .result-detail:last-of-type {
+            border-bottom: none;
+        }
+        
+        .result-detail span:first-child {
+            color: #666;
+        }
+        
+        .result-detail span:last-child {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #0077b6;
+        }
+        
+        .total-row span:first-child {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .total-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0077b6;
+        }
+        
+        .breakdown {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .breakdown-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            color: #666;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border: 2px solid #fc8181;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .error.show {
+            display: block;
+        }
+        
+        .fila-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .season-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .season-info h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .date-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="beach-icon">🏖️</div>
+            <h1>Lido Le Canne</h1>
+            <p>Calcola il tuo preventivo</p>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="fila">🪑 Seleziona la Fila</label>
+                <select id="fila">
+                    <option value="">-- Scegli una fila --</option>
+                    <option value="1">Fila 1 - Prima fila (fronte mare)</option>
+                    <option value="2">Fila 2</option>
+                    <option value="3">Fila 3</option>
+                    <option value="4">Fila 4</option>
+                    <option value="5">Fila 5</option>
+                    <option value="6">Fila 6</option>
+                    <option value="7">Fila 7</option>
+                    <option value="8">Fila 8</option>
+                </select>
+                <p class="fila-info">Le file più vicine al mare hanno prezzi maggiori</p>
+            </div>
+            
+            <div class="form-group">
+                <label>📅 Seleziona il Periodo</label>
+                <div class="date-row">
+                    <div>
+                        <label for="dataInizio" style="font-weight: normal; font-size: 0.85rem;">Data inizio</label>
+                        <input type="date" id="dataInizio" min="2026-05-01" max="2026-09-30">
+                    </div>
+                    <div>
+                        <label for="dataFine" style="font-weight: normal; font-size: 0.85rem;">Data fine</label>
+                        <input type="date" id="dataFine" min="2026-05-01" max="2026-09-30">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-calcola" onclick="calcolaPreventivo()">
+                🧮 Calcola Preventivo
+            </button>
+            
+            <div class="error" id="error"></div>
+            
+            <div class="result" id="result">
+                <h3>📋 Riepilogo Prenotazione</h3>
+                <div class="result-detail">
+                    <span>Fila selezionata:</span>
+                    <span id="riepilogoFila">-</span>
+                </div>
+                <div class="result-detail">
+                    <span>Periodo:</span>
+                    <span id="riepilogoPeriodo">-</span>
+                </div>
+                <div class="result-detail">
+                    <span>Numero giorni:</span>
+                    <span id="riepilogoGiorni">-</span>
+                </div>
+                
+                <div class="breakdown" id="breakdown">
+                    <div class="breakdown-title">Dettaglio calcolo:</div>
+                    <div id="breakdownContent"></div>
+                </div>
+                
+                <div class="total-row">
+                    <span>Totale:</span>
+                    <span class="total-price" id="totale">€0</span>
+                </div>
+            </div>
+            
+            <div class="season-info">
+                <h4>ℹ️ Stagione 2026</h4>
+                <p>Apertura: 1 Maggio - 30 Settembre<br>
+                I prezzi variano in base al periodo e alla fila scelta.<br>
+                Il preventivo include ombrellone e 2 lettini.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Listino prezzi 2026 - Lido Le Canne
+        // Struttura: prezzi[fila][periodo] = prezzo giornaliero
+        const prezzi = {
+            1: {
+                'maggio': 19,
+                'giugno': 25,
+                'luglio_1_10': 27,
+                'luglio_11_17': 33,
+                'luglio_18_24': 35,
+                'luglio_25_31': 39,
+                'agosto_1_7': 45,
+                'agosto_8_13': 55,
+                'agosto_14_16': 69,
+                'agosto_17_20': 65,
+                'agosto_21_31': 47,
+                'settembre': 25
+            },
+            2: {
+                'maggio': 19,
+                'giugno': 23,
+                'luglio_1_10': 25,
+                'luglio_11_17': 30,
+                'luglio_18_24': 33,
+                'luglio_25_31': 37,
+                'agosto_1_7': 43,
+                'agosto_8_13': 49,
+                'agosto_14_16': 65,
+                'agosto_17_20': 59,
+                'agosto_21_31': 47,
+                'settembre': 25
+            },
+            3: {
+                'maggio': 19,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 25,
+                'luglio_18_24': 27,
+                'luglio_25_31': 31,
+                'agosto_1_7': 39,
+                'agosto_8_13': 45,
+                'agosto_14_16': 65,
+                'agosto_17_20': 55,
+                'agosto_21_31': 45,
+                'settembre': 25
+            },
+            4: {
+                'maggio': 15,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 27,
+                'luglio_18_24': 27,
+                'luglio_25_31': 31,
+                'agosto_1_7': 37,
+                'agosto_8_13': 45,
+                'agosto_14_16': 59,
+                'agosto_17_20': 45,
+                'agosto_21_31': 39,
+                'settembre': 21
+            },
+            5: {
+                'maggio': 15,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 25,
+                'luglio_18_24': 25,
+                'luglio_25_31': 31,
+                'agosto_1_7': 37,
+                'agosto_8_13': 45,
+                'agosto_14_16': 59,
+                'agosto_17_20': 45,
+                'agosto_21_31': 39,
+                'settembre': 21
+            },
+            6: {
+                'maggio': 15,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 25,
+                'luglio_18_24': 25,
+                'luglio_25_31': 31,
+                'agosto_1_7': 37,
+                'agosto_8_13': 45,
+                'agosto_14_16': 59,
+                'agosto_17_20': 45,
+                'agosto_21_31': 39,
+                'settembre': 21
+            },
+            7: {
+                'maggio': 15,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 25,
+                'luglio_18_24': 25,
+                'luglio_25_31': 31,
+                'agosto_1_7': 37,
+                'agosto_8_13': 45,
+                'agosto_14_16': 59,
+                'agosto_17_20': 45,
+                'agosto_21_31': 39,
+                'settembre': 21
+            },
+            8: {
+                'maggio': 15,
+                'giugno': 19,
+                'luglio_1_10': 25,
+                'luglio_11_17': 25,
+                'luglio_18_24': 25,
+                'luglio_25_31': 31,
+                'agosto_1_7': 37,
+                'agosto_8_13': 45,
+                'agosto_14_16': 59,
+                'agosto_17_20': 45,
+                'agosto_21_31': 39,
+                'settembre': 21
+            }
+        };
+
+        // Nomi leggibili dei periodi
+        const nomiPeriodi = {
+            'maggio': 'Maggio',
+            'giugno': 'Giugno',
+            'luglio_1_10': 'Luglio 1-10',
+            'luglio_11_17': 'Luglio 11-17',
+            'luglio_18_24': 'Luglio 18-24',
+            'luglio_25_31': 'Luglio 25-31',
+            'agosto_1_7': 'Agosto 1-7',
+            'agosto_8_13': 'Agosto 8-13',
+            'agosto_14_16': 'Agosto 14-16',
+            'agosto_17_20': 'Agosto 17-20',
+            'agosto_21_31': 'Agosto 21-31',
+            'settembre': 'Settembre'
+        };
+
+        function getPeriodo(date) {
+            const month = date.getMonth() + 1; // 1-12
+            const day = date.getDate();
+            
+            if (month === 5) return 'maggio';
+            if (month === 6) return 'giugno';
+            if (month === 7) {
+                if (day <= 10) return 'luglio_1_10';
+                if (day <= 17) return 'luglio_11_17';
+                if (day <= 24) return 'luglio_18_24';
+                return 'luglio_25_31';
+            }
+            if (month === 8) {
+                if (day <= 7) return 'agosto_1_7';
+                if (day <= 13) return 'agosto_8_13';
+                if (day <= 16) return 'agosto_14_16';
+                if (day <= 20) return 'agosto_17_20';
+                return 'agosto_21_31';
+            }
+            if (month === 9) return 'settembre';
+            return null;
+        }
+
+        function formatDate(date) {
+            return date.toLocaleDateString('it-IT', { 
+                day: 'numeric', 
+                month: 'short' 
+            });
+        }
+
+        function calcolaPreventivo() {
+            const fila = document.getElementById('fila').value;
+            const dataInizioStr = document.getElementById('dataInizio').value;
+            const dataFineStr = document.getElementById('dataFine').value;
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            
+            // Reset
+            errorDiv.classList.remove('show');
+            resultDiv.classList.remove('show');
+            
+            // Validazione
+            if (!fila) {
+                showError('Seleziona una fila');
+                return;
+            }
+            if (!dataInizioStr || !dataFineStr) {
+                showError('Seleziona le date di inizio e fine');
+                return;
+            }
+            
+            const dataInizio = new Date(dataInizioStr);
+            const dataFine = new Date(dataFineStr);
+            
+            if (dataFine < dataInizio) {
+                showError('La data di fine deve essere successiva alla data di inizio');
+                return;
+            }
+            
+            // Verifica che le date siano nella stagione
+            const stagionInizio = new Date('2026-05-01');
+            const stagioneFine = new Date('2026-09-30');
+            
+            if (dataInizio < stagionInizio || dataFine > stagioneFine) {
+                showError('Le date devono essere comprese tra il 1 Maggio e il 30 Settembre 2026');
+                return;
+            }
+            
+            // Calcolo giorni e costi per periodo
+            const breakdown = {};
+            let totale = 0;
+            let giorniTotali = 0;
+            
+            const currentDate = new Date(dataInizio);
+            while (currentDate <= dataFine) {
+                const periodo = getPeriodo(currentDate);
+                if (periodo) {
+                    const prezzo = prezzi[fila][periodo];
+                    if (!breakdown[periodo]) {
+                        breakdown[periodo] = { giorni: 0, prezzoGiorno: prezzo, totale: 0 };
+                    }
+                    breakdown[periodo].giorni++;
+                    breakdown[periodo].totale += prezzo;
+                    totale += prezzo;
+                    giorniTotali++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
+            // Mostra risultati
+            document.getElementById('riepilogoFila').textContent = `Fila ${fila}`;
+            document.getElementById('riepilogoPeriodo').textContent = `${formatDate(dataInizio)} - ${formatDate(dataFine)}`;
+            document.getElementById('riepilogoGiorni').textContent = giorniTotali;
+            document.getElementById('totale').textContent = `€${totale}`;
+            
+            // Breakdown dettagliato
+            let breakdownHtml = '';
+            for (const [periodo, dati] of Object.entries(breakdown)) {
+                breakdownHtml += `
+                    <div class="breakdown-item">
+                        <span>${nomiPeriodi[periodo]} (${dati.giorni} gg × €${dati.prezzoGiorno})</span>
+                        <span>€${dati.totale}</span>
+                    </div>
+                `;
+            }
+            document.getElementById('breakdownContent').innerHTML = breakdownHtml;
+            
+            resultDiv.classList.add('show');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        // Imposta date minime/massime
+        document.addEventListener('DOMContentLoaded', function() {
+            const oggi = new Date();
+            const dataInizioInput = document.getElementById('dataInizio');
+            const dataFineInput = document.getElementById('dataFine');
+            
+            // Aggiorna data fine minima quando cambia data inizio
+            dataInizioInput.addEventListener('change', function() {
+                dataFineInput.min = this.value;
+                if (dataFineInput.value && dataFineInput.value < this.value) {
+                    dataFineInput.value = this.value;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
