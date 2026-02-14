@@ -269,6 +269,56 @@
             width: 24px;
             height: 24px;
         }
+        
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe4d6 100%);
+            border: 2px solid #ff8c42;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-wrapper:hover {
+            background: linear-gradient(135deg, #ffe4d6 0%, #ffd4bd 100%);
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #ff8c42;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            cursor: pointer;
+            font-weight: normal !important;
+        }
+        
+        .menu-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .menu-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        .menu-price {
+            font-weight: 700;
+            color: #ff8c42;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
 
         @media (max-width: 480px) {
             .date-row {
@@ -324,6 +374,18 @@
                 </div>
             </div>
             
+            <div class="form-group">
+                <label>🍽️ Extra</label>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="menuTuristico">
+                    <label for="menuTuristico" class="checkbox-label">
+                        <span class="menu-title">Menu Turistico per 2 persone</span>
+                        <span class="menu-desc">Primo + Secondo</span>
+                        <span class="menu-price">€79</span>
+                    </label>
+                </div>
+            </div>
+            
             <button class="btn-calcola" onclick="calcolaPreventivo()">
                 🧮 Calcola Preventivo
             </button>
@@ -348,6 +410,11 @@
                 <div class="breakdown" id="breakdown">
                     <div class="breakdown-title">Dettaglio calcolo:</div>
                     <div id="breakdownContent"></div>
+                </div>
+                
+                <div class="result-detail" id="menuRow" style="display: none;">
+                    <span>Menu Turistico (2 pers.):</span>
+                    <span id="riepilogoMenu">€79</span>
                 </div>
                 
                 <div class="total-row">
@@ -599,7 +666,6 @@
             document.getElementById('riepilogoFila').textContent = `Fila ${fila}`;
             document.getElementById('riepilogoPeriodo').textContent = `${formatDate(dataInizio)} - ${formatDate(dataFine)}`;
             document.getElementById('riepilogoGiorni').textContent = giorniTotali;
-            document.getElementById('totale').textContent = `€${totale}`;
             
             // Breakdown dettagliato
             let breakdownHtml = '';
@@ -612,6 +678,18 @@
                 `;
             }
             document.getElementById('breakdownContent').innerHTML = breakdownHtml;
+            
+            // Menu turistico
+            const menuTuristico = document.getElementById('menuTuristico').checked;
+            const menuRow = document.getElementById('menuRow');
+            if (menuTuristico) {
+                totale += 79;
+                menuRow.style.display = 'flex';
+            } else {
+                menuRow.style.display = 'none';
+            }
+            
+            document.getElementById('totale').textContent = `€${totale}`;
             
             resultDiv.classList.add('show');
         }
@@ -643,12 +721,15 @@
                 year: 'numeric'
             });
             
+            const menuTuristico = document.getElementById('menuTuristico').checked;
+            const menuText = menuTuristico ? '\n🍽️ *Menu Turistico:* Sì (primo + secondo per 2 pers.)' : '';
+            
             const messaggio = `Ciao! 🏖️ Vorrei prenotare al Lido Le Canne:
 
 📍 *Fila:* ${fila}
 📅 *Dal:* ${formatDateLong(dataInizio)}
 📅 *Al:* ${formatDateLong(dataFine)}
-⏱️ *Giorni:* ${giorni}
+⏱️ *Giorni:* ${giorni}${menuText}
 💰 *Preventivo:* ${totale}
 
 Grazie!`;
