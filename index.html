@@ -1,1 +1,1743 @@
-dummy
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lido Le Canne - La Tua Estate da Sogno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,119,182,0.85) 0%, rgba(0,180,216,0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, #f0f4f8, transparent);
+        }
+        
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .hero-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .hero-btn-primary {
+            background: white;
+            color: #0077b6;
+        }
+        
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* TRUST BAR */
+        .trust-bar {
+            background: white;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        
+        .trust-icon {
+            font-size: 1.3rem;
+        }
+        
+        .trust-item strong {
+            color: #0077b6;
+        }
+        
+        /* GALLERY */
+        .gallery {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* SERVICES SECTION EXPANDED */
+        .services-full {
+            background: white;
+            padding: 50px 20px;
+        }
+        
+        .services-full-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+        
+        .services-full-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .service-full-item {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-full-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-full-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .service-full-content h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .service-full-content p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* PACKAGES SECTION */
+        .packages {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+        }
+        
+        .packages-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .packages .section-title {
+            color: white;
+        }
+        
+        .packages .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        
+        .package-card.popular {
+            border: 3px solid #ff6b6b;
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .package-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .package-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0077b6;
+            margin-bottom: 5px;
+        }
+        
+        .package-original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .package-savings {
+            background: #dcfce7;
+            color: #166534;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .package-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .package-features li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: #25D366;
+            font-weight: bold;
+        }
+        
+        .btn-package {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .btn-package:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* URGENCY BAR */
+        .urgency-bar {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .urgency-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* MAIN CONTAINER */
+        .main-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px 20px 50px;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .card-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .viewing-now {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .viewing-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .form-section {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        select, input[type="date"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        
+        select:focus, input[type="date"]:focus {
+            outline: none;
+            border-color: #0077b6;
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+        }
+        
+        .date-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        /* UPSELLING SECTION */
+        .upselling-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: none;
+        }
+        
+        .upselling-section.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .upselling-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .upselling-header h4 {
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .upselling-header span {
+            font-size: 1.3rem;
+        }
+        
+        .upsell-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .upsell-item:hover {
+            border-color: #0077b6;
+        }
+        
+        .upsell-item.selected {
+            border-color: #25D366;
+            background: #f0fff4;
+        }
+        
+        .upsell-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #25D366;
+        }
+        
+        .upsell-content {
+            flex: 1;
+        }
+        
+        .upsell-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .upsell-popularity {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .upsell-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .upsell-price {
+            font-weight: 700;
+            color: #0077b6;
+            font-size: 1.1rem;
+        }
+        
+        .btn-calcola {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+        
+        .btn-calcola:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,119,182,0.3);
+        }
+        
+        .result {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .result.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .result-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.95rem;
+        }
+        
+        .result-detail:last-of-type {
+            border-bottom: none;
+        }
+        
+        .result-detail span:first-child {
+            color: #666;
+        }
+        
+        .result-detail span:last-child {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #0077b6;
+        }
+        
+        .total-row span:first-child {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .total-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0077b6;
+        }
+        
+        .discount-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .breakdown {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .breakdown-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            color: #666;
+        }
+        
+        /* CTA BUTTONS */
+        .cta-section {
+            margin-top: 20px;
+        }
+        
+        .btn-conferma {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+        
+        .btn-conferma:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.35);
+        }
+        
+        .btn-conferma-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .btn-paga-online {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #0077b6;
+            border: 2px solid #0077b6;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .btn-paga-online:hover {
+            background: #0077b6;
+            color: white;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border: 2px solid #fc8181;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .error.show {
+            display: block;
+        }
+        
+        .fila-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe4d6 100%);
+            border: 2px solid #ff8c42;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-wrapper:hover {
+            background: linear-gradient(135deg, #ffe4d6 0%, #ffd4bd 100%);
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #ff8c42;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        .menu-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .menu-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        .menu-price {
+            font-weight: 700;
+            color: #ff8c42;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        .season-info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .season-info h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .services-full-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-full-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-bar {
+                gap: 15px;
+            }
+            
+            .trust-item {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .date-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .urgency-bar {
+                font-size: 0.85rem;
+            }
+            
+            .package-price {
+                font-size: 2rem;
+            }
+        }
+        
+        /* CHATBOT WIDGET CSS */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chatbot-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 119, 182, 0.6);
+        }
+
+        .chatbot-icon span {
+            font-size: 28px;
+        }
+
+        .chatbot-container {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        #chatbotMessages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-message {
+            padding: 10px 15px;
+            border-radius: 12px;
+            max-width: 85%;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            white-space: pre-line;
+        }
+
+        .user-message {
+            background: #0077b6;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot-message {
+            background: #f0f4f8;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            gap: 8px;
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        #chatbotInput {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #chatbotInput:focus {
+            border-color: #0077b6;
+        }
+
+        .chatbot-send-btn {
+            background: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-send-btn:hover {
+            background: #005a96;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-container {
+                width: calc(100vw - 20px);
+                height: 70vh;
+                bottom: 80px;
+                right: 10px;
+            }
+
+            .chatbot-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>🏖️</span>
+            <span>Stabilimento Balneare dal 1985</span>
+        </div>
+        <h1>Lido Le Canne</h1>
+        <p class="hero-subtitle">La Tua Estate da Sogno a Pochi Passi dal Mare</p>
+        <div class="hero-cta">
+            <a href="#calcola" class="hero-btn hero-btn-primary">📅 Prenota Ora</a>
+        </div>
+    </section>
+    
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <span class="trust-icon">⭐</span>
+            <span><strong>4.8/5</strong> - 127 recensioni Google</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">👨‍👩‍👧‍👦</span>
+            <span><strong>500+</strong> famiglie soddisfatte nel 2025</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">✓</span>
+            <span>Cancellazione gratuita fino a 7gg prima</span>
+        </div>
+    </div>
+    
+    <!-- GALLERY -->
+    <section class="gallery">
+        <h2 class="gallery-title">📸 Il Nostro Lido</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80" alt="Spiaggia">
+                <span class="gallery-label">🌊 Mare Cristallino</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Ombrelloni">
+                <span class="gallery-label">☀️ Ombrelloni</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=400&q=80" alt="Relax">
+                <span class="gallery-label">🛋️ Comfort</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Ristorante">
+                <span class="gallery-label">🍽️ Ristorante</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SERVICES SECTION EXPANDED -->
+    <section class="services-full">
+        <div class="services-full-container">
+            <h2 class="section-title">✨ Tutto Incluso nella Prenotazione</h2>
+            <p class="section-subtitle">Goditi la spiaggia senza pensieri, ci pensiamo noi a tutto</p>
+            <div class="services-full-grid">
+                <div class="service-full-item">
+                    <div class="service-full-icon">🏖️</div>
+                    <div class="service-full-content">
+                        <h3>Ombrellone Premium</h3>
+                        <p>Con lettini imbottiti extra comfort per il massimo relax</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🚿</div>
+                    <div class="service-full-content">
+                        <h3>Docce Calde & Spogliatoi</h3>
+                        <p>Sempre puliti e sanificati, con acqua calda inclusa</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">📶</div>
+                    <div class="service-full-content">
+                        <h3>Wi-Fi Gratuito</h3>
+                        <p>Connessione veloce su tutta la spiaggia</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🅿️</div>
+                    <div class="service-full-content">
+                        <h3>Parcheggio Riservato</h3>
+                        <p>Posti auto riservati ai clienti del lido</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🍽️</div>
+                    <div class="service-full-content">
+                        <h3>Bar & Ristorante</h3>
+                        <p>A soli 10 metri dal tuo ombrellone, servizio in spiaggia</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">👶</div>
+                    <div class="service-full-content">
+                        <h3>Area Giochi Bambini</h3>
+                        <p>Sorvegliata, con giochi sicuri e animazione</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PACKAGES SECTION -->
+    <section class="packages">
+        <div class="packages-container">
+            <h2 class="section-title">📦 Pacchetti Tutto Incluso</h2>
+            <p class="section-subtitle">Scegli il pacchetto perfetto per te e risparmia!</p>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-icon">💑</div>
+                    <div class="package-name">WEEKEND ROMANTICO</div>
+                    <div class="package-original-price">€118</div>
+                    <div class="package-price">€89</div>
+                    <div class="package-savings">RISPARMI €29!</div>
+                    <ul class="package-features">
+                        <li>2 giorni (Sabato e Domenica)</li>
+                        <li>Prima fila fronte mare</li>
+                        <li>Aperitivo al tramonto incluso</li>
+                        <li>2 lettini imbottiti premium</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Weekend Romantico', 89, '2 giorni (sab-dom) + Aperitivo + Prima fila')">
+                        Prenota Ora
+                    </button>
+                </div>
+                
+                <div class="package-card popular">
+                    <div class="package-badge">PIÙ SCELTO</div>
+                    <div class="package-icon">👨‍👩‍👧‍👦</div>
+                    <div class="package-name">SETTIMANA FAMIGLIA</div>
+                    <div class="package-original-price">€570</div>
+                    <div class="package-price">€450</div>
+                    <div class="package-savings">RISPARMI €120!</div>
+                    <ul class="package-features">
+                        <li>7 giorni consecutivi</li>
+                        <li>Fila centrale (ottima vista)</li>
+                        <li>3 Menu turistici inclusi</li>
+                        <li>Area bambini gratuita</li>
+                        <li>Parcheggio VIP riservato</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Settimana Famiglia', 450, '7 giorni + Menu turistico 3x + Fila centrale')">
+                        Prenota Ora
+                    </button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-icon">👑</div>
+                    <div class="package-name">AGOSTO COMPLETO</div>
+                    <div class="package-original-price">€1.580</div>
+                    <div class="package-price">€1.200</div>
+                    <div class="package-savings">RISPARMI €380!</div>
+                    <ul class="package-features">
+                        <li>Tutto Agosto (31 giorni)</li>
+                        <li>Prima fila garantita</li>
+                        <li>Tutti i servizi VIP inclusi</li>
+                        <li>4 Menu turistici inclusi</li>
+                        <li>Aperitivi illimitati</li>
+                        <li>Parcheggio premium coperto</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Agosto Completo VIP', 1200, 'Tutto agosto + Tutti i servizi VIP')">
+                        Prenota Ora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        <div class="urgency-item pulse">
+            <span>🔥</span>
+            <span>Solo <strong>12 ombrelloni</strong> disponibili per Ferragosto</span>
+        </div>
+        <div class="urgency-item">
+            <span>⏰</span>
+            <span>Prenota entro 48h: <strong>risparmia 15%</strong></span>
+        </div>
+    </div>
+    
+    <!-- CALCULATOR -->
+    <div class="main-container" id="calcola">
+        <div class="calculator-card">
+            <div class="card-header">
+                <h2>🧮 Oppure Crea il Tuo Preventivo</h2>
+                <p>Scegli fila e date, calcola il prezzo in tempo reale</p>
+                <div class="viewing-now">
+                    <div class="viewing-dot"></div>
+                    <span id="viewingCount">3</span> persone stanno guardando questa pagina
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="fila">🪑 Seleziona la Fila</label>
+                    <select id="fila">
+                        <option value="">-- Scegli una fila --</option>
+                        <option value="1">Fila 1 - Prima fila (fronte mare) ⭐</option>
+                        <option value="2">Fila 2</option>
+                        <option value="3">Fila 3</option>
+                        <option value="4">Fila 4</option>
+                        <option value="5">Fila 5</option>
+                        <option value="6">Fila 6</option>
+                        <option value="7">Fila 7</option>
+                        <option value="8">Fila 8</option>
+                    </select>
+                    <p class="fila-info">Le file più vicine al mare hanno prezzi maggiori</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>📅 Seleziona il Periodo</label>
+                    <div class="date-row">
+                        <div>
+                            <label for="dataInizio" style="font-weight: normal; font-size: 0.85rem;">Data inizio</label>
+                            <input type="date" id="dataInizio" min="2026-05-01" max="2026-09-30">
+                        </div>
+                        <div>
+                            <label for="dataFine" style="font-weight: normal; font-size: 0.85rem;">Data fine</label>
+                            <input type="date" id="dataFine" min="2026-05-01" max="2026-09-30">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UPSELLING SECTION -->
+                <div class="upselling-section" id="upselling">
+                    <div class="upselling-header">
+                        <span>🎯</span>
+                        <h4>Clienti come te hanno aggiunto:</h4>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('aperitivo')">
+                        <input type="checkbox" id="upsell_aperitivo" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                🍹 Aperitivo al Tramonto
+                                <span class="upsell-popularity">67% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Per 2 persone, con vista mare</div>
+                        </div>
+                        <div class="upsell-price">€15</div>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('frigobox')">
+                        <input type="checkbox" id="upsell_frigobox" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                ❄️ Frigobox Giornaliero
+                                <span class="upsell-popularity">45% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Bevande sempre fresche sotto l'ombrellone</div>
+                        </div>
+                        <div class="upsell-price" id="frigobox_price">€5/gg</div>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('telo')">
+                        <input type="checkbox" id="upsell_telo" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                🏖️ Telo Mare Premium
+                                <span class="upsell-popularity">23% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Telo mare di qualità, x2 persone</div>
+                        </div>
+                        <div class="upsell-price">€20</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>🍽️ Menu</label>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="menuTuristico">
+                        <label for="menuTuristico" class="checkbox-label">
+                            <span class="menu-title">Menu Turistico per 2 persone</span>
+                            <span class="menu-desc">Primo + Secondo</span>
+                            <span class="menu-price">€79</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="btn-calcola" onclick="calcolaPreventivo()">
+                    🧮 Calcola Preventivo
+                </button>
+                
+                <div class="error" id="error"></div>
+                
+                <div class="result" id="result">
+                    <h3>📋 Riepilogo Prenotazione</h3>
+                    <div class="result-detail">
+                        <span>Fila selezionata:</span>
+                        <span id="riepilogoFila">-</span>
+                    </div>
+                    <div class="result-detail">
+                        <span>Periodo:</span>
+                        <span id="riepilogoPeriodo">-</span>
+                    </div>
+                    <div class="result-detail">
+                        <span>Numero giorni:</span>
+                        <span id="riepilogoGiorni">-</span>
+                    </div>
+                    
+                    <div class="breakdown" id="breakdown">
+                        <div class="breakdown-title">Dettaglio calcolo:</div>
+                        <div id="breakdownContent"></div>
+                    </div>
+                    
+                    <div class="result-detail" id="menuRow" style="display: none;">
+                        <span>Menu Turistico (2 pers.):</span>
+                        <span id="riepilogoMenu">€79</span>
+                    </div>
+                    
+                    <div id="extrasRows"></div>
+                    
+                    <div class="total-row">
+                        <span>Totale:</span>
+                        <span class="total-price" id="totale">€0</span>
+                    </div>
+                    
+                    <div class="discount-badge" id="discountBadge" style="display: none;">
+                        <span>💰</span>
+                        <span>Prenota entro 48h e risparmia il 15%! Nuovo totale: <strong id="totaleSconto">€0</strong></span>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <button class="btn-conferma" onclick="inviaWhatsApp()">
+                            <span>✅ CONFERMA PRENOTAZIONE</span>
+                            <span class="btn-conferma-sub">📱 Ti contattiamo su WhatsApp per conferma</span>
+                        </button>
+                        
+                        <button class="btn-paga-online" onclick="alert('Pagamento online disponibile a breve!')">
+                            <span>💳</span>
+                            <span>Oppure paga online e ricevi sconto 5%</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="season-info">
+                    <h4>ℹ️ Stagione 2026</h4>
+                    <p>Apertura: 1 Maggio - 30 Settembre<br>
+                    I prezzi variano in base al periodo e alla fila scelta.<br>
+                    Il preventivo include ombrellone e 2 lettini.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🏖️ Lido Le Canne - La tua estate da sogno © 2026</p>
+        <p style="margin-top: 10px;">📍 Località Le Canne | 📞 +39 351 470 7090</p>
+    </footer>
+    
+    <!-- CHATBOT WIDGET HTML -->
+    <div class="chatbot-widget">
+        <div class="chatbot-icon" onclick="openChatbot()">
+            <span>💬</span>
+        </div>
+        <div id="chatbotContainer" class="chatbot-container">
+            <div class="chatbot-header">
+                🏖️ Lido Le Canne - Assistente
+            </div>
+            <div id="chatbotMessages">
+                <div class="chatbot-message bot-message">
+                    Ciao! 👋 Benvenuto al Lido Le Canne! Come posso aiutarti? Chiedimi di prezzi, pacchetti, menu o disponibilità! ☀️
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Scrivi una domanda...">
+                <button class="chatbot-send-btn" onclick="sendChatMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Listino prezzi 2026 - Lido Le Canne
+        const prezzi = {
+            1: { 'maggio': 19, 'giugno': 25, 'luglio_1_10': 27, 'luglio_11_17': 33, 'luglio_18_24': 35, 'luglio_25_31': 39, 'agosto_1_7': 45, 'agosto_8_13': 55, 'agosto_14_16': 69, 'agosto_17_20': 65, 'agosto_21_31': 47, 'settembre': 25 },
+            2: { 'maggio': 19, 'giugno': 23, 'luglio_1_10': 25, 'luglio_11_17': 30, 'luglio_18_24': 33, 'luglio_25_31': 37, 'agosto_1_7': 43, 'agosto_8_13': 49, 'agosto_14_16': 65, 'agosto_17_20': 59, 'agosto_21_31': 47, 'settembre': 25 },
+            3: { 'maggio': 19, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25, 'luglio_18_24': 27, 'luglio_25_31': 31, 'agosto_1_7': 39, 'agosto_8_13': 45, 'agosto_14_16': 65, 'agosto_17_20': 55, 'agosto_21_31': 45, 'settembre': 25 },
+            4: { 'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 27, 'luglio_18_24': 27, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45, 'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21 },
+            5: { 'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25, 'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45, 'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21 },
+            6: { 'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25, 'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45, 'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21 },
+            7: { 'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25, 'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45, 'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21 },
+            8: { 'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25, 'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45, 'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21 }
+        };
+
+        const nomiPeriodi = {
+            'maggio': 'Maggio', 'giugno': 'Giugno', 'luglio_1_10': 'Luglio 1-10',
+            'luglio_11_17': 'Luglio 11-17', 'luglio_18_24': 'Luglio 18-24',
+            'luglio_25_31': 'Luglio 25-31', 'agosto_1_7': 'Agosto 1-7',
+            'agosto_8_13': 'Agosto 8-13', 'agosto_14_16': 'Agosto 14-16',
+            'agosto_17_20': 'Agosto 17-20', 'agosto_21_31': 'Agosto 21-31', 'settembre': 'Settembre'
+        };
+        
+        let giorniCalcolati = 0;
+
+        function getPeriodo(date) {
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            if (month === 5) return 'maggio';
+            if (month === 6) return 'giugno';
+            if (month === 7) {
+                if (day <= 10) return 'luglio_1_10';
+                if (day <= 17) return 'luglio_11_17';
+                if (day <= 24) return 'luglio_18_24';
+                return 'luglio_25_31';
+            }
+            if (month === 8) {
+                if (day <= 7) return 'agosto_1_7';
+                if (day <= 13) return 'agosto_8_13';
+                if (day <= 16) return 'agosto_14_16';
+                if (day <= 20) return 'agosto_17_20';
+                return 'agosto_21_31';
+            }
+            if (month === 9) return 'settembre';
+            return null;
+        }
+
+        function formatDate(date) {
+            return date.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+        }
+
+        let totaleGlobale = 0;
+        
+        function toggleUpsell(type) {
+            const checkbox = document.getElementById('upsell_' + type);
+            checkbox.checked = !checkbox.checked;
+            const item = checkbox.closest('.upsell-item');
+            item.classList.toggle('selected', checkbox.checked);
+        }
+        
+        function showUpselling() {
+            const dataInizio = document.getElementById('dataInizio').value;
+            const dataFine = document.getElementById('dataFine').value;
+            const upsellingSection = document.getElementById('upselling');
+            if (dataInizio && dataFine) {
+                upsellingSection.classList.add('show');
+                const start = new Date(dataInizio);
+                const end = new Date(dataFine);
+                const diffTime = Math.abs(end - start);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                giorniCalcolati = diffDays;
+                document.getElementById('frigobox_price').textContent = `€${5 * diffDays}`;
+            }
+        }
+
+        function calcolaPreventivo() {
+            const fila = document.getElementById('fila').value;
+            const dataInizioStr = document.getElementById('dataInizio').value;
+            const dataFineStr = document.getElementById('dataFine').value;
+            const errorDiv = document.getElementById('error');
+            const resultDiv = document.getElementById('result');
+            errorDiv.classList.remove('show');
+            resultDiv.classList.remove('show');
+            if (!fila) { showError('Seleziona una fila'); return; }
+            if (!dataInizioStr || !dataFineStr) { showError('Seleziona le date di inizio e fine'); return; }
+            const dataInizio = new Date(dataInizioStr);
+            const dataFine = new Date(dataFineStr);
+            if (dataFine < dataInizio) { showError('La data di fine deve essere successiva alla data di inizio'); return; }
+            const stagionInizio = new Date('2026-05-01');
+            const stagioneFine = new Date('2026-09-30');
+            if (dataInizio < stagionInizio || dataFine > stagioneFine) {
+                showError('Le date devono essere comprese tra il 1 Maggio e il 30 Settembre 2026');
+                return;
+            }
+            const breakdown = {};
+            let totale = 0;
+            let giorniTotali = 0;
+            const currentDate = new Date(dataInizio);
+            while (currentDate <= dataFine) {
+                const periodo = getPeriodo(currentDate);
+                if (periodo) {
+                    const prezzo = prezzi[fila][periodo];
+                    if (!breakdown[periodo]) breakdown[periodo] = { giorni: 0, prezzoGiorno: prezzo, totale: 0 };
+                    breakdown[periodo].giorni++;
+                    breakdown[periodo].totale += prezzo;
+                    totale += prezzo;
+                    giorniTotali++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            document.getElementById('riepilogoFila').textContent = `Fila ${fila}`;
+            document.getElementById('riepilogoPeriodo').textContent = `${formatDate(dataInizio)} - ${formatDate(dataFine)}`;
+            document.getElementById('riepilogoGiorni').textContent = giorniTotali;
+            let breakdownHtml = '';
+            for (const [periodo, dati] of Object.entries(breakdown)) {
+                breakdownHtml += `<div class="breakdown-item"><span>${nomiPeriodi[periodo]} (${dati.giorni} gg × €${dati.prezzoGiorno})</span><span>€${dati.totale}</span></div>`;
+            }
+            document.getElementById('breakdownContent').innerHTML = breakdownHtml;
+            const menuTuristico = document.getElementById('menuTuristico').checked;
+            const menuRow = document.getElementById('menuRow');
+            if (menuTuristico) { totale += 79; menuRow.style.display = 'flex'; } else { menuRow.style.display = 'none'; }
+            let extrasHtml = '';
+            const aperitivo = document.getElementById('upsell_aperitivo').checked;
+            const frigobox = document.getElementById('upsell_frigobox').checked;
+            const telo = document.getElementById('upsell_telo').checked;
+            if (aperitivo) { totale += 15; extrasHtml += `<div class="result-detail"><span>🍹 Aperitivo al Tramonto:</span><span>€15</span></div>`; }
+            if (frigobox) { const frigoboxTotal = 5 * giorniTotali; totale += frigoboxTotal; extrasHtml += `<div class="result-detail"><span>❄️ Frigobox (${giorniTotali} gg × €5):</span><span>€${frigoboxTotal}</span></div>`; }
+            if (telo) { totale += 20; extrasHtml += `<div class="result-detail"><span>🏖️ Telo Mare Premium (x2):</span><span>€20</span></div>`; }
+            document.getElementById('extrasRows').innerHTML = extrasHtml;
+            totaleGlobale = totale;
+            document.getElementById('totale').textContent = `€${totale}`;
+            const totaleSconto = Math.round(totale * 0.85);
+            document.getElementById('totaleSconto').textContent = `€${totaleSconto}`;
+            document.getElementById('discountBadge').style.display = 'flex';
+            resultDiv.classList.add('show');
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+        
+        function inviaWhatsApp() {
+            const fila = document.getElementById('fila').value;
+            const dataInizioStr = document.getElementById('dataInizio').value;
+            const dataFineStr = document.getElementById('dataFine').value;
+            const totale = document.getElementById('totale').textContent;
+            const giorni = document.getElementById('riepilogoGiorni').textContent;
+            if (!fila || !dataInizioStr || !dataFineStr) { showError('Calcola prima il preventivo'); return; }
+            const dataInizio = new Date(dataInizioStr);
+            const dataFine = new Date(dataFineStr);
+            const formatDateLong = (date) => date.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+            let extras = [];
+            const menuTuristico = document.getElementById('menuTuristico').checked;
+            const aperitivo = document.getElementById('upsell_aperitivo').checked;
+            const frigobox = document.getElementById('upsell_frigobox').checked;
+            const telo = document.getElementById('upsell_telo').checked;
+            if (menuTuristico) extras.push('🍽️ Menu Turistico (primo + secondo per 2 pers.)');
+            if (aperitivo) extras.push('🍹 Aperitivo al Tramonto');
+            if (frigobox) extras.push('❄️ Frigobox giornaliero');
+            if (telo) extras.push('🏖️ Telo Mare Premium x2');
+            const extrasText = extras.length > 0 ? '\n\n*Extras selezionati:*\n' + extras.join('\n') : '';
+            const messaggio = `Ciao! 🏖️ Vorrei *CONFERMARE* la prenotazione al Lido Le Canne:\n\n📍 *Fila:* ${fila}\n📅 *Dal:* ${formatDateLong(dataInizio)}\n📅 *Al:* ${formatDateLong(dataFine)}\n⏱️ *Giorni:* ${giorni}${extrasText}\n💰 *Preventivo:* ${totale}\n\nAttendo conferma, grazie! 🙏`;
+            const numeroWhatsApp = '393514707090';
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(messaggio)}`;
+            window.open(url, '_blank');
+        }
+        
+        function prenotaPacchetto(nome, prezzo, dettagli) {
+            const messaggio = `Ciao! 🏖️ Vorrei prenotare il pacchetto *${nome}* al Lido Le Canne:\n\n📦 *Pacchetto:* ${nome}\n✨ *Include:* ${dettagli}\n💰 *Prezzo:* €${prezzo}\n\nAttendo conferma disponibilità, grazie! 🙏`;
+            const numeroWhatsApp = '393514707090';
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(messaggio)}`;
+            window.open(url, '_blank');
+        }
+
+        function updateViewingCount() {
+            const count = Math.floor(Math.random() * 5) + 2;
+            document.getElementById('viewingCount').textContent = count;
+        }
+        setInterval(updateViewingCount, 8000);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dataInizioInput = document.getElementById('dataInizio');
+            const dataFineInput = document.getElementById('dataFine');
+            dataInizioInput.addEventListener('change', function() {
+                dataFineInput.min = this.value;
+                if (dataFineInput.value && dataFineInput.value < this.value) dataFineInput.value = this.value;
+                showUpselling();
+            });
+            dataFineInput.addEventListener('change', showUpselling);
+        });
+
+        // CHATBOT AI - RICONOSCIMENTO INTELLIGENTE
+        const chatbotKnowledge = {
+            prezzi: {
+                keywords: ['prezzo', 'costo', 'quanto costa', 'tariffe', 'listino', 'quanto', 'lettino', 'ombrellone', 'costa'],
+                response: '💰 Prezzi 2026:\n\n📅 Maggio & Settembre: €15-25/giorno\n☀️ Giugno: €19-25/giorno\n🌤️ Luglio: €25-39/giorno\n🔥 Agosto: €37-69/giorno\n\nIl prezzo dipende da data e fila. Usa il calcolatore sopra per il prezzo esatto! 🏖️'
+            },
+            menu: {
+                keywords: ['menu', 'cibo', 'mangiare', 'ristorazione', 'primo', 'secondo', 'piatti', 'ristorante', 'pranzo', 'cena'],
+                response: '🍽️ Menu Turistico - €79 per 2 persone\n\n✨ Include:\n• 1 primo a scelta\n• 1 secondo a scelta\n• Perfetto per coppie!\n\nPuoi aggiungerlo durante la prenotazione! 🍝'
+            },
+            pacchetti: {
+                keywords: ['pacchetto', 'pacchetti', 'offerta', 'offerte', 'weekend', 'settimana', 'agosto', 'romantico', 'famiglia', 'promozione'],
+                response: '🎉 Pacchetti Speciali:\n\n💑 Weekend Romantico - €89\n(2 giorni + aperitivo + prima fila)\n\n👨‍👩‍👧‍👦 Settimana Famiglia - €450\n(7 giorni + 3 menu turistici)\n\n☀️ Agosto Completo - €1,200\n(31 giorni + tutti i servizi VIP)\n\nScopri i dettagli sopra! 🏖️'
+            },
+            disponibilita: {
+                keywords: ['disponibile', 'disponibilità', 'libero', 'posti', 'prenotare', 'prenoto', 'booking'],
+                response: '📅 Disponibilità:\n\nSiamo aperti dal 1 Maggio al 30 Settembre 2026!\n\nUsa il calcolatore sopra per vedere i prezzi, poi clicca "Prenota su WhatsApp" per confermare! 📱'
+            },
+            orari: {
+                keywords: ['orari', 'orario', 'aperto', 'chiuso', 'apertura', 'chiusura', 'ore'],
+                response: '⏰ Orari Stagione Estiva:\n\n🌅 Apriamo: 9:00\n🌅 Chiudiamo: 20:00\n\nTutto il giorno senza interruzioni! ☀️'
+            },
+            aperitivo: {
+                keywords: ['aperitivo', 'apericena', 'aperitivi', 'drink', 'spritz', 'cocktail', 'bere'],
+                response: '🍾 Aperitivo al Tramonto - €15\n\nInclude bevanda a scelta + stuzzichini, con vista mare spettacolare! 🌅\n\nPuoi aggiungerlo alla prenotazione!'
+            },
+            frigobox: {
+                keywords: ['frigobox', 'frigo', 'freddo', 'ghiaccio', 'bevande', 'fresco'],
+                response: '🧊 Frigobox Giornaliero - €5/giorno\n\nTieni fredde le tue bevande e snack tutto il giorno! Perfetto per il caldo estivo. ☀️'
+            },
+            asciugamani: {
+                keywords: ['asciugamani', 'asciugamano', 'telo', 'teli', 'premium'],
+                response: '🏖️ Telo Mare Premium (x2) - €20\n\nAsciugamani morbidi e comodi per tutta la giornata al mare! ☀️'
+            },
+            contatti: {
+                keywords: ['whatsapp', 'contatti', 'numero', 'telefono', 'contattare', 'chiamare', 'scrivere'],
+                response: '📱 Contattaci:\n\nWhatsApp: +39 351 470 7090\n\nRispondiamo subito! Oppure usa il bottone "Prenota su WhatsApp" nel calcolatore! 💬'
+            },
+            servizi: {
+                keywords: ['servizi', 'incluso', 'cosa include', 'wifi', 'docce', 'parcheggio', 'bambini'],
+                response: '✨ Servizi Inclusi:\n\n🏖️ Ombrellone + 2 lettini\n🚿 Docce calde & spogliatoi\n📶 Wi-Fi gratuito\n🅿️ Parcheggio riservato\n🍽️ Bar & ristorante\n👶 Area giochi bambini\n\nTutto incluso nel prezzo! 🎉'
+            },
+            dove: {
+                keywords: ['dove', 'posizione', 'indirizzo', 'come arrivare', 'località', 'mappa'],
+                response: '📍 Dove Siamo:\n\nLocalità Le Canne\n\nContattaci su WhatsApp per indicazioni precise! 📱\n+39 351 470 7090'
+            }
+        };
+
+        function findBestResponse(userMessage) {
+            const message = userMessage.toLowerCase().trim();
+            
+            // Saluto
+            if (message.match(/^(ciao|salve|buongiorno|buonasera|hey|ehi|hola)/)) {
+                return '👋 Ciao! Benvenuto al Lido Le Canne!\n\nCome posso aiutarti?\n\n💰 Prezzi\n📦 Pacchetti\n🍽️ Menu\n📅 Disponibilità\n⏰ Orari\n📱 Contatti';
+            }
+            
+            // Cerca la risposta migliore
+            for (let [category, data] of Object.entries(chatbotKnowledge)) {
+                for (let keyword of data.keywords) {
+                    if (message.includes(keyword)) {
+                        return data.response;
+                    }
+                }
+            }
+            
+            // Default
+            return '👋 Non ho capito bene!\n\nPuoi chiedermi di:\n\n💰 Prezzi\n🍽️ Menu\n📦 Pacchetti\n📅 Disponibilità\n⏰ Orari\n🍾 Aperitivi\n🧊 Frigobox\n📱 Contatti\n\nCosa vorresti sapere? 🏖️';
+        }
+
+        function openChatbot() {
+            const chatContainer = document.getElementById('chatbotContainer');
+            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+            if (chatContainer.style.display === 'flex') document.getElementById('chatbotInput').focus();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            if (!message) return;
+            const messagesDiv = document.getElementById('chatbotMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chatbot-message user-message';
+            userMsg.textContent = message;
+            messagesDiv.appendChild(userMsg);
+            input.value = '';
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chatbot-message bot-message';
+                botMsg.textContent = findBestResponse(message);
+                messagesDiv.appendChild(botMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 400);
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('chatbotInput') === document.activeElement) sendChatMessage();
+        });
+    </script>
+</body>
+</html>
