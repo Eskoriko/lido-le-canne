@@ -178,45 +178,200 @@
             font-size: 0.8rem;
         }
         
-        /* SERVICES */
-        .services {
+        /* SERVICES SECTION EXPANDED */
+        .services-full {
             background: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
         
-        .services-container {
-            max-width: 900px;
+        .services-full-container {
+            max-width: 1100px;
             margin: 0 auto;
+        }
+        
+        .section-title {
             text-align: center;
-        }
-        
-        .services-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
-        .services-grid {
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+        
+        .services-full-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
         
-        .service-item {
-            padding: 20px;
+        .service-full-item {
+            padding: 25px;
             background: #f8f9fa;
-            border-radius: 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
         }
         
-        .service-icon {
-            font-size: 2rem;
+        .service-full-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-full-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .service-full-content h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .service-full-content p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* PACKAGES SECTION */
+        .packages {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+        }
+        
+        .packages-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .packages .section-title {
+            color: white;
+        }
+        
+        .packages .section-subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        
+        .package-card.popular {
+            border: 3px solid #ff6b6b;
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .package-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .package-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
             margin-bottom: 10px;
         }
         
-        .service-name {
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0077b6;
+            margin-bottom: 5px;
+        }
+        
+        .package-original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .package-savings {
+            background: #dcfce7;
+            color: #166534;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #333;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .package-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .package-features li {
+            padding: 8px 0;
+            color: #555;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: #25D366;
+            font-weight: bold;
+        }
+        
+        .btn-package {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .btn-package:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
         
         /* URGENCY BAR */
@@ -335,6 +490,99 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
+        }
+        
+        /* UPSELLING SECTION */
+        .upselling-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: none;
+        }
+        
+        .upselling-section.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .upselling-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .upselling-header h4 {
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .upselling-header span {
+            font-size: 1.3rem;
+        }
+        
+        .upsell-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .upsell-item:hover {
+            border-color: #0077b6;
+        }
+        
+        .upsell-item.selected {
+            border-color: #25D366;
+            background: #f0fff4;
+        }
+        
+        .upsell-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #25D366;
+        }
+        
+        .upsell-content {
+            flex: 1;
+        }
+        
+        .upsell-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .upsell-popularity {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .upsell-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .upsell-price {
+            font-weight: 700;
+            color: #0077b6;
+            font-size: 1.1rem;
         }
         
         .btn-calcola {
@@ -613,6 +861,18 @@
         }
         
         /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .services-full-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -626,8 +886,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .services-full-grid {
+                grid-template-columns: 1fr;
             }
             
             .trust-bar {
@@ -654,6 +914,10 @@
             
             .urgency-bar {
                 font-size: 0.85rem;
+            }
+            
+            .package-price {
+                font-size: 2rem;
             }
         }
     </style>
@@ -711,26 +975,117 @@
         </div>
     </section>
     
-    <!-- SERVICES -->
-    <section class="services">
-        <div class="services-container">
-            <h2 class="services-title">✨ Cosa Include la Prenotazione</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">🏖️</div>
-                    <div class="service-name">Ombrellone</div>
+    <!-- SERVICES SECTION EXPANDED -->
+    <section class="services-full">
+        <div class="services-full-container">
+            <h2 class="section-title">✨ Tutto Incluso nella Prenotazione</h2>
+            <p class="section-subtitle">Goditi la spiaggia senza pensieri, ci pensiamo noi a tutto</p>
+            <div class="services-full-grid">
+                <div class="service-full-item">
+                    <div class="service-full-icon">🏖️</div>
+                    <div class="service-full-content">
+                        <h3>Ombrellone Premium</h3>
+                        <p>Con lettini imbottiti extra comfort per il massimo relax</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">🛏️</div>
-                    <div class="service-name">2 Lettini</div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🚿</div>
+                    <div class="service-full-content">
+                        <h3>Docce Calde & Spogliatoi</h3>
+                        <p>Sempre puliti e sanificati, con acqua calda inclusa</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">🚿</div>
-                    <div class="service-name">Docce</div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">📶</div>
+                    <div class="service-full-content">
+                        <h3>Wi-Fi Gratuito</h3>
+                        <p>Connessione veloce su tutta la spiaggia</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">🅿️</div>
-                    <div class="service-name">Parcheggio</div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🅿️</div>
+                    <div class="service-full-content">
+                        <h3>Parcheggio Riservato</h3>
+                        <p>Posti auto riservati ai clienti del lido</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">🍽️</div>
+                    <div class="service-full-content">
+                        <h3>Bar & Ristorante</h3>
+                        <p>A soli 10 metri dal tuo ombrellone, servizio in spiaggia</p>
+                    </div>
+                </div>
+                <div class="service-full-item">
+                    <div class="service-full-icon">👶</div>
+                    <div class="service-full-content">
+                        <h3>Area Giochi Bambini</h3>
+                        <p>Sorvegliata, con giochi sicuri e animazione</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PACKAGES SECTION -->
+    <section class="packages">
+        <div class="packages-container">
+            <h2 class="section-title">📦 Pacchetti Tutto Incluso</h2>
+            <p class="section-subtitle">Scegli il pacchetto perfetto per te e risparmia!</p>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-icon">💑</div>
+                    <div class="package-name">WEEKEND ROMANTICO</div>
+                    <div class="package-original-price">€118</div>
+                    <div class="package-price">€89</div>
+                    <div class="package-savings">RISPARMI €29!</div>
+                    <ul class="package-features">
+                        <li>2 giorni (Sabato e Domenica)</li>
+                        <li>Prima fila fronte mare</li>
+                        <li>Aperitivo al tramonto incluso</li>
+                        <li>2 lettini imbottiti premium</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Weekend Romantico', 89, '2 giorni (sab-dom) + Aperitivo + Prima fila')">
+                        Prenota Ora
+                    </button>
+                </div>
+                
+                <div class="package-card popular">
+                    <div class="package-badge">PIÙ SCELTO</div>
+                    <div class="package-icon">👨‍👩‍👧‍👦</div>
+                    <div class="package-name">SETTIMANA FAMIGLIA</div>
+                    <div class="package-original-price">€570</div>
+                    <div class="package-price">€450</div>
+                    <div class="package-savings">RISPARMI €120!</div>
+                    <ul class="package-features">
+                        <li>7 giorni consecutivi</li>
+                        <li>Fila centrale (ottima vista)</li>
+                        <li>3 Menu turistici inclusi</li>
+                        <li>Area bambini gratuita</li>
+                        <li>Parcheggio VIP riservato</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Settimana Famiglia', 450, '7 giorni + Menu turistico 3x + Fila centrale')">
+                        Prenota Ora
+                    </button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-icon">👑</div>
+                    <div class="package-name">AGOSTO COMPLETO</div>
+                    <div class="package-original-price">€1.580</div>
+                    <div class="package-price">€1.200</div>
+                    <div class="package-savings">RISPARMI €380!</div>
+                    <ul class="package-features">
+                        <li>Tutto Agosto (31 giorni)</li>
+                        <li>Prima fila garantita</li>
+                        <li>Tutti i servizi VIP inclusi</li>
+                        <li>4 Menu turistici inclusi</li>
+                        <li>Aperitivi illimitati</li>
+                        <li>Parcheggio premium coperto</li>
+                    </ul>
+                    <button class="btn-package" onclick="prenotaPacchetto('Agosto Completo VIP', 1200, 'Tutto agosto + Tutti i servizi VIP')">
+                        Prenota Ora
+                    </button>
                 </div>
             </div>
         </div>
@@ -752,7 +1107,7 @@
     <div class="main-container" id="calcola">
         <div class="calculator-card">
             <div class="card-header">
-                <h2>🧮 Calcola il Tuo Preventivo</h2>
+                <h2>🧮 Oppure Crea il Tuo Preventivo</h2>
                 <p>Scegli fila e date, calcola il prezzo in tempo reale</p>
                 <div class="viewing-now">
                     <div class="viewing-dot"></div>
@@ -791,8 +1146,52 @@
                     </div>
                 </div>
                 
+                <!-- UPSELLING SECTION -->
+                <div class="upselling-section" id="upselling">
+                    <div class="upselling-header">
+                        <span>🎯</span>
+                        <h4>Clienti come te hanno aggiunto:</h4>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('aperitivo')">
+                        <input type="checkbox" id="upsell_aperitivo" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                🍹 Aperitivo al Tramonto
+                                <span class="upsell-popularity">67% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Per 2 persone, con vista mare</div>
+                        </div>
+                        <div class="upsell-price">€15</div>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('frigobox')">
+                        <input type="checkbox" id="upsell_frigobox" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                ❄️ Frigobox Giornaliero
+                                <span class="upsell-popularity">45% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Bevande sempre fresche sotto l'ombrellone</div>
+                        </div>
+                        <div class="upsell-price" id="frigobox_price">€5/gg</div>
+                    </div>
+                    
+                    <div class="upsell-item" onclick="toggleUpsell('telo')">
+                        <input type="checkbox" id="upsell_telo" onchange="event.stopPropagation()">
+                        <div class="upsell-content">
+                            <div class="upsell-title">
+                                🏖️ Telo Mare Premium
+                                <span class="upsell-popularity">23% lo sceglie</span>
+                            </div>
+                            <div class="upsell-desc">Telo mare di qualità, x2 persone</div>
+                        </div>
+                        <div class="upsell-price">€20</div>
+                    </div>
+                </div>
+                
                 <div class="form-group">
-                    <label>🍽️ Extra</label>
+                    <label>🍽️ Menu</label>
                     <div class="checkbox-wrapper">
                         <input type="checkbox" id="menuTuristico">
                         <label for="menuTuristico" class="checkbox-label">
@@ -833,6 +1232,8 @@
                         <span>Menu Turistico (2 pers.):</span>
                         <span id="riepilogoMenu">€79</span>
                     </div>
+                    
+                    <div id="extrasRows"></div>
                     
                     <div class="total-row">
                         <span>Totale:</span>
@@ -924,6 +1325,8 @@
             'agosto_8_13': 'Agosto 8-13', 'agosto_14_16': 'Agosto 14-16',
             'agosto_17_20': 'Agosto 17-20', 'agosto_21_31': 'Agosto 21-31', 'settembre': 'Settembre'
         };
+        
+        let giorniCalcolati = 0;
 
         function getPeriodo(date) {
             const month = date.getMonth() + 1;
@@ -953,6 +1356,30 @@
         }
 
         let totaleGlobale = 0;
+        
+        function toggleUpsell(type) {
+            const checkbox = document.getElementById('upsell_' + type);
+            checkbox.checked = !checkbox.checked;
+            const item = checkbox.closest('.upsell-item');
+            item.classList.toggle('selected', checkbox.checked);
+        }
+        
+        function showUpselling() {
+            const dataInizio = document.getElementById('dataInizio').value;
+            const dataFine = document.getElementById('dataFine').value;
+            const upsellingSection = document.getElementById('upselling');
+            
+            if (dataInizio && dataFine) {
+                upsellingSection.classList.add('show');
+                // Calcola giorni per frigobox
+                const start = new Date(dataInizio);
+                const end = new Date(dataFine);
+                const diffTime = Math.abs(end - start);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                giorniCalcolati = diffDays;
+                document.getElementById('frigobox_price').textContent = `€${5 * diffDays}`;
+            }
+        }
 
         function calcolaPreventivo() {
             const fila = document.getElementById('fila').value;
@@ -1013,6 +1440,7 @@
             }
             document.getElementById('breakdownContent').innerHTML = breakdownHtml;
             
+            // Menu turistico
             const menuTuristico = document.getElementById('menuTuristico').checked;
             const menuRow = document.getElementById('menuRow');
             if (menuTuristico) {
@@ -1021,6 +1449,27 @@
             } else {
                 menuRow.style.display = 'none';
             }
+            
+            // Extras (upselling)
+            let extrasHtml = '';
+            const aperitivo = document.getElementById('upsell_aperitivo').checked;
+            const frigobox = document.getElementById('upsell_frigobox').checked;
+            const telo = document.getElementById('upsell_telo').checked;
+            
+            if (aperitivo) {
+                totale += 15;
+                extrasHtml += `<div class="result-detail"><span>🍹 Aperitivo al Tramonto:</span><span>€15</span></div>`;
+            }
+            if (frigobox) {
+                const frigoboxTotal = 5 * giorniTotali;
+                totale += frigoboxTotal;
+                extrasHtml += `<div class="result-detail"><span>❄️ Frigobox (${giorniTotali} gg × €5):</span><span>€${frigoboxTotal}</span></div>`;
+            }
+            if (telo) {
+                totale += 20;
+                extrasHtml += `<div class="result-detail"><span>🏖️ Telo Mare Premium (x2):</span><span>€20</span></div>`;
+            }
+            document.getElementById('extrasRows').innerHTML = extrasHtml;
             
             totaleGlobale = totale;
             document.getElementById('totale').textContent = `€${totale}`;
@@ -1059,18 +1508,43 @@
                 day: 'numeric', month: 'long', year: 'numeric'
             });
             
+            // Raccogli tutti gli extra
+            let extras = [];
             const menuTuristico = document.getElementById('menuTuristico').checked;
-            const menuText = menuTuristico ? '\n🍽️ *Menu Turistico:* Sì (primo + secondo per 2 pers.)' : '';
+            const aperitivo = document.getElementById('upsell_aperitivo').checked;
+            const frigobox = document.getElementById('upsell_frigobox').checked;
+            const telo = document.getElementById('upsell_telo').checked;
+            
+            if (menuTuristico) extras.push('🍽️ Menu Turistico (primo + secondo per 2 pers.)');
+            if (aperitivo) extras.push('🍹 Aperitivo al Tramonto');
+            if (frigobox) extras.push('❄️ Frigobox giornaliero');
+            if (telo) extras.push('🏖️ Telo Mare Premium x2');
+            
+            const extrasText = extras.length > 0 ? '\n\n*Extras selezionati:*\n' + extras.join('\n') : '';
             
             const messaggio = `Ciao! 🏖️ Vorrei *CONFERMARE* la prenotazione al Lido Le Canne:
 
 📍 *Fila:* ${fila}
 📅 *Dal:* ${formatDateLong(dataInizio)}
 📅 *Al:* ${formatDateLong(dataFine)}
-⏱️ *Giorni:* ${giorni}${menuText}
+⏱️ *Giorni:* ${giorni}${extrasText}
 💰 *Preventivo:* ${totale}
 
 Attendo conferma, grazie! 🙏`;
+            
+            const numeroWhatsApp = '393514707090';
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(messaggio)}`;
+            window.open(url, '_blank');
+        }
+        
+        function prenotaPacchetto(nome, prezzo, dettagli) {
+            const messaggio = `Ciao! 🏖️ Vorrei prenotare il pacchetto *${nome}* al Lido Le Canne:
+
+📦 *Pacchetto:* ${nome}
+✨ *Include:* ${dettagli}
+💰 *Prezzo:* €${prezzo}
+
+Attendo conferma disponibilità, grazie! 🙏`;
             
             const numeroWhatsApp = '393514707090';
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(messaggio)}`;
@@ -1093,7 +1567,10 @@ Attendo conferma, grazie! 🙏`;
                 if (dataFineInput.value && dataFineInput.value < this.value) {
                     dataFineInput.value = this.value;
                 }
+                showUpselling();
             });
+            
+            dataFineInput.addEventListener('change', showUpselling);
         });
     </script>
 </body>
