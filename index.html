@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lido Le Canne - Calcola Preventivo</title>
+    <title>Lido Le Canne - La Tua Estate da Sogno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,41 +15,287 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: #f0f4f8;
             min-height: 100vh;
-            padding: 20px;
         }
         
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,119,182,0.85) 0%, rgba(0,180,216,0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             color: white;
-            padding: 30px;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, #f0f4f8, transparent);
+        }
+        
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .hero-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .hero-btn-primary {
+            background: white;
+            color: #0077b6;
+        }
+        
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* TRUST BAR */
+        .trust-bar {
+            background: white;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+        
+        .trust-icon {
+            font-size: 1.3rem;
+        }
+        
+        .trust-item strong {
+            color: #0077b6;
+        }
+        
+        /* GALLERY */
+        .gallery {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* SERVICES */
+        .services {
+            background: white;
+            padding: 40px 20px;
+        }
+        
+        .services-container {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
         }
         
-        .header h1 {
+        .services-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .service-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .service-icon {
             font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .service-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95rem;
+        }
+        
+        /* URGENCY BAR */
+        .urgency-bar {
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .urgency-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* MAIN CONTAINER */
+        .main-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px 20px 50px;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
             margin-bottom: 5px;
         }
         
-        .header p {
+        .card-header p {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
-        .beach-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        .viewing-now {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .viewing-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
         }
         
         .form-section {
@@ -69,8 +318,9 @@
             width: 100%;
             padding: 14px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
+            font-family: inherit;
             transition: border-color 0.3s, box-shadow 0.3s;
             background: white;
         }
@@ -89,24 +339,21 @@
         
         .btn-calcola {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
         }
         
         .btn-calcola:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0,119,182,0.3);
-        }
-        
-        .btn-calcola:active {
-            transform: translateY(0);
         }
         
         .result {
@@ -124,14 +371,8 @@
         }
         
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .result h3 {
@@ -164,6 +405,7 @@
         .total-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-top: 20px;
             padding-top: 20px;
             border-top: 2px solid #0077b6;
@@ -176,9 +418,21 @@
         }
         
         .total-price {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #0077b6;
+        }
+        
+        .discount-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .breakdown {
@@ -202,6 +456,65 @@
             color: #666;
         }
         
+        /* CTA BUTTONS */
+        .cta-section {
+            margin-top: 20px;
+        }
+        
+        .btn-conferma {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+        
+        .btn-conferma:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.35);
+        }
+        
+        .btn-conferma-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .btn-paga-online {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #0077b6;
+            border: 2px solid #0077b6;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .btn-paga-online:hover {
+            background: #0077b6;
+            color: white;
+        }
+        
         .error {
             background: #fff5f5;
             border: 2px solid #fc8181;
@@ -222,61 +535,13 @@
             margin-top: 5px;
         }
         
-        .season-info {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
-        .season-info h4 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .btn-whatsapp {
-            width: 100%;
-            padding: 16px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            color: white;
-        }
-        
-        .btn-whatsapp:active {
-            transform: translateY(0);
-        }
-        
-        .whatsapp-icon {
-            width: 24px;
-            height: 24px;
-        }
-        
         .checkbox-wrapper {
             display: flex;
             align-items: center;
             padding: 15px;
             background: linear-gradient(135deg, #fff5f0 0%, #ffe4d6 100%);
             border: 2px solid #ff8c42;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -298,7 +563,6 @@
             flex-direction: column;
             flex: 1;
             cursor: pointer;
-            font-weight: normal !important;
         }
         
         .menu-title {
@@ -319,262 +583,350 @@
             font-size: 1.1rem;
             margin-top: 5px;
         }
-
+        
+        .season-info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .season-info h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .trust-bar {
+                gap: 15px;
+            }
+            
+            .trust-item {
+                font-size: 0.85rem;
+            }
+        }
+        
         @media (max-width: 480px) {
             .date-row {
                 grid-template-columns: 1fr;
             }
             
-            .header h1 {
-                font-size: 1.5rem;
+            .hero h1 {
+                font-size: 1.7rem;
             }
             
             .form-section {
                 padding: 20px;
             }
+            
+            .urgency-bar {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="beach-icon">🏖️</div>
-            <h1>Lido Le Canne</h1>
-            <p>Calcola il tuo preventivo</p>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>🏖️</span>
+            <span>Stabilimento Balneare dal 1985</span>
         </div>
-        
-        <div class="form-section">
-            <div class="form-group">
-                <label for="fila">🪑 Seleziona la Fila</label>
-                <select id="fila">
-                    <option value="">-- Scegli una fila --</option>
-                    <option value="1">Fila 1 - Prima fila (fronte mare)</option>
-                    <option value="2">Fila 2</option>
-                    <option value="3">Fila 3</option>
-                    <option value="4">Fila 4</option>
-                    <option value="5">Fila 5</option>
-                    <option value="6">Fila 6</option>
-                    <option value="7">Fila 7</option>
-                    <option value="8">Fila 8</option>
-                </select>
-                <p class="fila-info">Le file più vicine al mare hanno prezzi maggiori</p>
+        <h1>Lido Le Canne</h1>
+        <p class="hero-subtitle">La Tua Estate da Sogno a Pochi Passi dal Mare</p>
+        <div class="hero-cta">
+            <a href="#calcola" class="hero-btn hero-btn-primary">📅 Prenota Ora</a>
+        </div>
+    </section>
+    
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <span class="trust-icon">⭐</span>
+            <span><strong>4.8/5</strong> - 127 recensioni Google</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">👨‍👩‍👧‍👦</span>
+            <span><strong>500+</strong> famiglie soddisfatte nel 2025</span>
+        </div>
+        <div class="trust-item">
+            <span class="trust-icon">✓</span>
+            <span>Cancellazione gratuita fino a 7gg prima</span>
+        </div>
+    </div>
+    
+    <!-- GALLERY -->
+    <section class="gallery">
+        <h2 class="gallery-title">📸 Il Nostro Lido</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80" alt="Spiaggia">
+                <span class="gallery-label">🌊 Mare Cristallino</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Ombrelloni">
+                <span class="gallery-label">☀️ Ombrelloni</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=400&q=80" alt="Relax">
+                <span class="gallery-label">🛋️ Comfort</span>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Ristorante">
+                <span class="gallery-label">🍽️ Ristorante</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SERVICES -->
+    <section class="services">
+        <div class="services-container">
+            <h2 class="services-title">✨ Cosa Include la Prenotazione</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🏖️</div>
+                    <div class="service-name">Ombrellone</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🛏️</div>
+                    <div class="service-name">2 Lettini</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚿</div>
+                    <div class="service-name">Docce</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🅿️</div>
+                    <div class="service-name">Parcheggio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        <div class="urgency-item pulse">
+            <span>🔥</span>
+            <span>Solo <strong>12 ombrelloni</strong> disponibili per Ferragosto</span>
+        </div>
+        <div class="urgency-item">
+            <span>⏰</span>
+            <span>Prenota entro 48h: <strong>risparmia 15%</strong></span>
+        </div>
+    </div>
+    
+    <!-- CALCULATOR -->
+    <div class="main-container" id="calcola">
+        <div class="calculator-card">
+            <div class="card-header">
+                <h2>🧮 Calcola il Tuo Preventivo</h2>
+                <p>Scegli fila e date, calcola il prezzo in tempo reale</p>
+                <div class="viewing-now">
+                    <div class="viewing-dot"></div>
+                    <span id="viewingCount">3</span> persone stanno guardando questa pagina
+                </div>
             </div>
             
-            <div class="form-group">
-                <label>📅 Seleziona il Periodo</label>
-                <div class="date-row">
-                    <div>
-                        <label for="dataInizio" style="font-weight: normal; font-size: 0.85rem;">Data inizio</label>
-                        <input type="date" id="dataInizio" min="2026-05-01" max="2026-09-30">
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="fila">🪑 Seleziona la Fila</label>
+                    <select id="fila">
+                        <option value="">-- Scegli una fila --</option>
+                        <option value="1">Fila 1 - Prima fila (fronte mare) ⭐</option>
+                        <option value="2">Fila 2</option>
+                        <option value="3">Fila 3</option>
+                        <option value="4">Fila 4</option>
+                        <option value="5">Fila 5</option>
+                        <option value="6">Fila 6</option>
+                        <option value="7">Fila 7</option>
+                        <option value="8">Fila 8</option>
+                    </select>
+                    <p class="fila-info">Le file più vicine al mare hanno prezzi maggiori</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>📅 Seleziona il Periodo</label>
+                    <div class="date-row">
+                        <div>
+                            <label for="dataInizio" style="font-weight: normal; font-size: 0.85rem;">Data inizio</label>
+                            <input type="date" id="dataInizio" min="2026-05-01" max="2026-09-30">
+                        </div>
+                        <div>
+                            <label for="dataFine" style="font-weight: normal; font-size: 0.85rem;">Data fine</label>
+                            <input type="date" id="dataFine" min="2026-05-01" max="2026-09-30">
+                        </div>
                     </div>
-                    <div>
-                        <label for="dataFine" style="font-weight: normal; font-size: 0.85rem;">Data fine</label>
-                        <input type="date" id="dataFine" min="2026-05-01" max="2026-09-30">
+                </div>
+                
+                <div class="form-group">
+                    <label>🍽️ Extra</label>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="menuTuristico">
+                        <label for="menuTuristico" class="checkbox-label">
+                            <span class="menu-title">Menu Turistico per 2 persone</span>
+                            <span class="menu-desc">Primo + Secondo</span>
+                            <span class="menu-price">€79</span>
+                        </label>
                     </div>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <label>🍽️ Extra</label>
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="menuTuristico">
-                    <label for="menuTuristico" class="checkbox-label">
-                        <span class="menu-title">Menu Turistico per 2 persone</span>
-                        <span class="menu-desc">Primo + Secondo</span>
-                        <span class="menu-price">€79</span>
-                    </label>
-                </div>
-            </div>
-            
-            <button class="btn-calcola" onclick="calcolaPreventivo()">
-                🧮 Calcola Preventivo
-            </button>
-            
-            <div class="error" id="error"></div>
-            
-            <div class="result" id="result">
-                <h3>📋 Riepilogo Prenotazione</h3>
-                <div class="result-detail">
-                    <span>Fila selezionata:</span>
-                    <span id="riepilogoFila">-</span>
-                </div>
-                <div class="result-detail">
-                    <span>Periodo:</span>
-                    <span id="riepilogoPeriodo">-</span>
-                </div>
-                <div class="result-detail">
-                    <span>Numero giorni:</span>
-                    <span id="riepilogoGiorni">-</span>
+                
+                <button class="btn-calcola" onclick="calcolaPreventivo()">
+                    🧮 Calcola Preventivo
+                </button>
+                
+                <div class="error" id="error"></div>
+                
+                <div class="result" id="result">
+                    <h3>📋 Riepilogo Prenotazione</h3>
+                    <div class="result-detail">
+                        <span>Fila selezionata:</span>
+                        <span id="riepilogoFila">-</span>
+                    </div>
+                    <div class="result-detail">
+                        <span>Periodo:</span>
+                        <span id="riepilogoPeriodo">-</span>
+                    </div>
+                    <div class="result-detail">
+                        <span>Numero giorni:</span>
+                        <span id="riepilogoGiorni">-</span>
+                    </div>
+                    
+                    <div class="breakdown" id="breakdown">
+                        <div class="breakdown-title">Dettaglio calcolo:</div>
+                        <div id="breakdownContent"></div>
+                    </div>
+                    
+                    <div class="result-detail" id="menuRow" style="display: none;">
+                        <span>Menu Turistico (2 pers.):</span>
+                        <span id="riepilogoMenu">€79</span>
+                    </div>
+                    
+                    <div class="total-row">
+                        <span>Totale:</span>
+                        <span class="total-price" id="totale">€0</span>
+                    </div>
+                    
+                    <div class="discount-badge" id="discountBadge" style="display: none;">
+                        <span>💰</span>
+                        <span>Prenota entro 48h e risparmia il 15%! Nuovo totale: <strong id="totaleSconto">€0</strong></span>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <button class="btn-conferma" onclick="inviaWhatsApp()">
+                            <span>✅ CONFERMA PRENOTAZIONE</span>
+                            <span class="btn-conferma-sub">📱 Ti contattiamo su WhatsApp per conferma</span>
+                        </button>
+                        
+                        <button class="btn-paga-online" onclick="alert('Pagamento online disponibile a breve!')">
+                            <span>💳</span>
+                            <span>Oppure paga online e ricevi sconto 5%</span>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="breakdown" id="breakdown">
-                    <div class="breakdown-title">Dettaglio calcolo:</div>
-                    <div id="breakdownContent"></div>
+                <div class="season-info">
+                    <h4>ℹ️ Stagione 2026</h4>
+                    <p>Apertura: 1 Maggio - 30 Settembre<br>
+                    I prezzi variano in base al periodo e alla fila scelta.<br>
+                    Il preventivo include ombrellone e 2 lettini.</p>
                 </div>
-                
-                <div class="result-detail" id="menuRow" style="display: none;">
-                    <span>Menu Turistico (2 pers.):</span>
-                    <span id="riepilogoMenu">€79</span>
-                </div>
-                
-                <div class="total-row">
-                    <span>Totale:</span>
-                    <span class="total-price" id="totale">€0</span>
-                </div>
-                
-                <a href="#" class="btn-whatsapp" id="btnWhatsapp" onclick="inviaWhatsApp(); return false;">
-                    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    Prenota su WhatsApp
-                </a>
-            </div>
-            
-            <div class="season-info">
-                <h4>ℹ️ Stagione 2026</h4>
-                <p>Apertura: 1 Maggio - 30 Settembre<br>
-                I prezzi variano in base al periodo e alla fila scelta.<br>
-                Il preventivo include ombrellone e 2 lettini.</p>
             </div>
         </div>
     </div>
+    
+    <footer>
+        <p>🏖️ Lido Le Canne - La tua estate da sogno © 2026</p>
+        <p style="margin-top: 10px;">📍 Località Le Canne | 📞 +39 351 470 7090</p>
+    </footer>
 
     <script>
         // Listino prezzi 2026 - Lido Le Canne
-        // Struttura: prezzi[fila][periodo] = prezzo giornaliero
         const prezzi = {
             1: {
-                'maggio': 19,
-                'giugno': 25,
-                'luglio_1_10': 27,
-                'luglio_11_17': 33,
-                'luglio_18_24': 35,
-                'luglio_25_31': 39,
-                'agosto_1_7': 45,
-                'agosto_8_13': 55,
-                'agosto_14_16': 69,
-                'agosto_17_20': 65,
-                'agosto_21_31': 47,
-                'settembre': 25
+                'maggio': 19, 'giugno': 25, 'luglio_1_10': 27, 'luglio_11_17': 33,
+                'luglio_18_24': 35, 'luglio_25_31': 39, 'agosto_1_7': 45, 'agosto_8_13': 55,
+                'agosto_14_16': 69, 'agosto_17_20': 65, 'agosto_21_31': 47, 'settembre': 25
             },
             2: {
-                'maggio': 19,
-                'giugno': 23,
-                'luglio_1_10': 25,
-                'luglio_11_17': 30,
-                'luglio_18_24': 33,
-                'luglio_25_31': 37,
-                'agosto_1_7': 43,
-                'agosto_8_13': 49,
-                'agosto_14_16': 65,
-                'agosto_17_20': 59,
-                'agosto_21_31': 47,
-                'settembre': 25
+                'maggio': 19, 'giugno': 23, 'luglio_1_10': 25, 'luglio_11_17': 30,
+                'luglio_18_24': 33, 'luglio_25_31': 37, 'agosto_1_7': 43, 'agosto_8_13': 49,
+                'agosto_14_16': 65, 'agosto_17_20': 59, 'agosto_21_31': 47, 'settembre': 25
             },
             3: {
-                'maggio': 19,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 25,
-                'luglio_18_24': 27,
-                'luglio_25_31': 31,
-                'agosto_1_7': 39,
-                'agosto_8_13': 45,
-                'agosto_14_16': 65,
-                'agosto_17_20': 55,
-                'agosto_21_31': 45,
-                'settembre': 25
+                'maggio': 19, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25,
+                'luglio_18_24': 27, 'luglio_25_31': 31, 'agosto_1_7': 39, 'agosto_8_13': 45,
+                'agosto_14_16': 65, 'agosto_17_20': 55, 'agosto_21_31': 45, 'settembre': 25
             },
             4: {
-                'maggio': 15,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 27,
-                'luglio_18_24': 27,
-                'luglio_25_31': 31,
-                'agosto_1_7': 37,
-                'agosto_8_13': 45,
-                'agosto_14_16': 59,
-                'agosto_17_20': 45,
-                'agosto_21_31': 39,
-                'settembre': 21
+                'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 27,
+                'luglio_18_24': 27, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45,
+                'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21
             },
             5: {
-                'maggio': 15,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 25,
-                'luglio_18_24': 25,
-                'luglio_25_31': 31,
-                'agosto_1_7': 37,
-                'agosto_8_13': 45,
-                'agosto_14_16': 59,
-                'agosto_17_20': 45,
-                'agosto_21_31': 39,
-                'settembre': 21
+                'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25,
+                'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45,
+                'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21
             },
             6: {
-                'maggio': 15,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 25,
-                'luglio_18_24': 25,
-                'luglio_25_31': 31,
-                'agosto_1_7': 37,
-                'agosto_8_13': 45,
-                'agosto_14_16': 59,
-                'agosto_17_20': 45,
-                'agosto_21_31': 39,
-                'settembre': 21
+                'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25,
+                'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45,
+                'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21
             },
             7: {
-                'maggio': 15,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 25,
-                'luglio_18_24': 25,
-                'luglio_25_31': 31,
-                'agosto_1_7': 37,
-                'agosto_8_13': 45,
-                'agosto_14_16': 59,
-                'agosto_17_20': 45,
-                'agosto_21_31': 39,
-                'settembre': 21
+                'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25,
+                'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45,
+                'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21
             },
             8: {
-                'maggio': 15,
-                'giugno': 19,
-                'luglio_1_10': 25,
-                'luglio_11_17': 25,
-                'luglio_18_24': 25,
-                'luglio_25_31': 31,
-                'agosto_1_7': 37,
-                'agosto_8_13': 45,
-                'agosto_14_16': 59,
-                'agosto_17_20': 45,
-                'agosto_21_31': 39,
-                'settembre': 21
+                'maggio': 15, 'giugno': 19, 'luglio_1_10': 25, 'luglio_11_17': 25,
+                'luglio_18_24': 25, 'luglio_25_31': 31, 'agosto_1_7': 37, 'agosto_8_13': 45,
+                'agosto_14_16': 59, 'agosto_17_20': 45, 'agosto_21_31': 39, 'settembre': 21
             }
         };
 
-        // Nomi leggibili dei periodi
         const nomiPeriodi = {
-            'maggio': 'Maggio',
-            'giugno': 'Giugno',
-            'luglio_1_10': 'Luglio 1-10',
-            'luglio_11_17': 'Luglio 11-17',
-            'luglio_18_24': 'Luglio 18-24',
-            'luglio_25_31': 'Luglio 25-31',
-            'agosto_1_7': 'Agosto 1-7',
-            'agosto_8_13': 'Agosto 8-13',
-            'agosto_14_16': 'Agosto 14-16',
-            'agosto_17_20': 'Agosto 17-20',
-            'agosto_21_31': 'Agosto 21-31',
-            'settembre': 'Settembre'
+            'maggio': 'Maggio', 'giugno': 'Giugno', 'luglio_1_10': 'Luglio 1-10',
+            'luglio_11_17': 'Luglio 11-17', 'luglio_18_24': 'Luglio 18-24',
+            'luglio_25_31': 'Luglio 25-31', 'agosto_1_7': 'Agosto 1-7',
+            'agosto_8_13': 'Agosto 8-13', 'agosto_14_16': 'Agosto 14-16',
+            'agosto_17_20': 'Agosto 17-20', 'agosto_21_31': 'Agosto 21-31', 'settembre': 'Settembre'
         };
 
         function getPeriodo(date) {
-            const month = date.getMonth() + 1; // 1-12
+            const month = date.getMonth() + 1;
             const day = date.getDate();
             
             if (month === 5) return 'maggio';
@@ -597,11 +949,10 @@
         }
 
         function formatDate(date) {
-            return date.toLocaleDateString('it-IT', { 
-                day: 'numeric', 
-                month: 'short' 
-            });
+            return date.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
         }
+
+        let totaleGlobale = 0;
 
         function calcolaPreventivo() {
             const fila = document.getElementById('fila').value;
@@ -610,29 +961,17 @@
             const errorDiv = document.getElementById('error');
             const resultDiv = document.getElementById('result');
             
-            // Reset
             errorDiv.classList.remove('show');
             resultDiv.classList.remove('show');
             
-            // Validazione
-            if (!fila) {
-                showError('Seleziona una fila');
-                return;
-            }
-            if (!dataInizioStr || !dataFineStr) {
-                showError('Seleziona le date di inizio e fine');
-                return;
-            }
+            if (!fila) { showError('Seleziona una fila'); return; }
+            if (!dataInizioStr || !dataFineStr) { showError('Seleziona le date di inizio e fine'); return; }
             
             const dataInizio = new Date(dataInizioStr);
             const dataFine = new Date(dataFineStr);
             
-            if (dataFine < dataInizio) {
-                showError('La data di fine deve essere successiva alla data di inizio');
-                return;
-            }
+            if (dataFine < dataInizio) { showError('La data di fine deve essere successiva alla data di inizio'); return; }
             
-            // Verifica che le date siano nella stagione
             const stagionInizio = new Date('2026-05-01');
             const stagioneFine = new Date('2026-09-30');
             
@@ -641,7 +980,6 @@
                 return;
             }
             
-            // Calcolo giorni e costi per periodo
             const breakdown = {};
             let totale = 0;
             let giorniTotali = 0;
@@ -662,24 +1000,19 @@
                 currentDate.setDate(currentDate.getDate() + 1);
             }
             
-            // Mostra risultati
             document.getElementById('riepilogoFila').textContent = `Fila ${fila}`;
             document.getElementById('riepilogoPeriodo').textContent = `${formatDate(dataInizio)} - ${formatDate(dataFine)}`;
             document.getElementById('riepilogoGiorni').textContent = giorniTotali;
             
-            // Breakdown dettagliato
             let breakdownHtml = '';
             for (const [periodo, dati] of Object.entries(breakdown)) {
-                breakdownHtml += `
-                    <div class="breakdown-item">
-                        <span>${nomiPeriodi[periodo]} (${dati.giorni} gg × €${dati.prezzoGiorno})</span>
-                        <span>€${dati.totale}</span>
-                    </div>
-                `;
+                breakdownHtml += `<div class="breakdown-item">
+                    <span>${nomiPeriodi[periodo]} (${dati.giorni} gg × €${dati.prezzoGiorno})</span>
+                    <span>€${dati.totale}</span>
+                </div>`;
             }
             document.getElementById('breakdownContent').innerHTML = breakdownHtml;
             
-            // Menu turistico
             const menuTuristico = document.getElementById('menuTuristico').checked;
             const menuRow = document.getElementById('menuRow');
             if (menuTuristico) {
@@ -689,9 +1022,16 @@
                 menuRow.style.display = 'none';
             }
             
+            totaleGlobale = totale;
             document.getElementById('totale').textContent = `€${totale}`;
             
+            // Mostra sconto 15%
+            const totaleSconto = Math.round(totale * 0.85);
+            document.getElementById('totaleSconto').textContent = `€${totaleSconto}`;
+            document.getElementById('discountBadge').style.display = 'flex';
+            
             resultDiv.classList.add('show');
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function showError(message) {
@@ -716,15 +1056,13 @@
             const dataFine = new Date(dataFineStr);
             
             const formatDateLong = (date) => date.toLocaleDateString('it-IT', { 
-                day: 'numeric', 
-                month: 'long',
-                year: 'numeric'
+                day: 'numeric', month: 'long', year: 'numeric'
             });
             
             const menuTuristico = document.getElementById('menuTuristico').checked;
             const menuText = menuTuristico ? '\n🍽️ *Menu Turistico:* Sì (primo + secondo per 2 pers.)' : '';
             
-            const messaggio = `Ciao! 🏖️ Vorrei prenotare al Lido Le Canne:
+            const messaggio = `Ciao! 🏖️ Vorrei *CONFERMARE* la prenotazione al Lido Le Canne:
 
 📍 *Fila:* ${fila}
 📅 *Dal:* ${formatDateLong(dataInizio)}
@@ -732,20 +1070,24 @@
 ⏱️ *Giorni:* ${giorni}${menuText}
 💰 *Preventivo:* ${totale}
 
-Grazie!`;
+Attendo conferma, grazie! 🙏`;
             
             const numeroWhatsApp = '393514707090';
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(messaggio)}`;
             window.open(url, '_blank');
         }
 
-        // Imposta date minime/massime
+        // Simula visitatori casuali
+        function updateViewingCount() {
+            const count = Math.floor(Math.random() * 5) + 2;
+            document.getElementById('viewingCount').textContent = count;
+        }
+        setInterval(updateViewingCount, 8000);
+
         document.addEventListener('DOMContentLoaded', function() {
-            const oggi = new Date();
             const dataInizioInput = document.getElementById('dataInizio');
             const dataFineInput = document.getElementById('dataFine');
             
-            // Aggiorna data fine minima quando cambia data inizio
             dataInizioInput.addEventListener('change', function() {
                 dataFineInput.min = this.value;
                 if (dataFineInput.value && dataFineInput.value < this.value) {
